@@ -1,0 +1,602 @@
+<html lang="fr" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOJJ CONSULTING | Digital Transformation Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+
+    <style>
+        :root {
+            --signal-orange: #FF3D00;
+            --deep-navy: #020408;
+            --panel-gray: #0F1218;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--deep-navy);
+            color: #e2e8f0;
+            cursor: default;
+        }
+        .font-tech {
+            font-family: 'Space Grotesk', monospace;
+        }
+        /* Technical Grid Overlay */
+        .tech-grid {
+            background-size: 4rem 4rem;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+        /* Cinematic Grain */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020408;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--signal-orange);
+        }
+        /* Magnetic Button Glow */
+        .btn-magnetic {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .btn-magnetic::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-magnetic:hover::before {
+            left: 100%;
+        }
+        /* Text Utilities */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        /* Smooth Fade In */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        }
+        .glass-panel {
+            background: rgba(15, 18, 24, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .status-dot {
+            height: 6px; width: 6px; border-radius: 50%; display: inline-block;
+        }
+    </style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-cormorant">.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style></head>
+<body class="antialiased selection:bg-orange-600 selection:text-white">
+
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-40 border-b border-white/5 bg-[#020408]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <iconify-icon icon="solar:atom-linear" class="text-orange-600 text-2xl group-hover:rotate-90 transition-transform duration-500"></iconify-icon>
+                <span class="font-tech text-lg tracking-[0.2em] font-semibold text-white uppercase">SOJJ <span class="text-slate-500">Consulting</span></span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 font-tech text-xs tracking-widest text-slate-400 uppercase">
+                <a href="#services" class="hover:text-orange-500 transition-colors duration-300">Offre</a>
+                <a href="#market" class="hover:text-orange-500 transition-colors duration-300">Marché</a>
+                <a href="#financials" class="hover:text-orange-500 transition-colors duration-300">Prévisions</a>
+                <a href="#founder" class="hover:text-orange-500 transition-colors duration-300">L'Entrepreneur</a>
+                
+                <button class="btn-magnetic border border-white/20 px-6 py-2 text-white hover:border-orange-600 hover:text-orange-500 transition-colors duration-300 clip-diagonal">
+                    Contact
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Video Placeholder (Image) -->
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Digital Abstract Data" class="w-full h-full object-cover opacity-30 scale-105 animate-[pulse_10s_ease-in-out_infinite] filter contrast-125 saturate-0">
+            <!-- Dark Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#020408] via-[#020408]/80 to-transparent"></div>
+            <!-- Radial Focus -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020408_90%)]"></div>
+        </div>
+
+        <!-- Technical Grid -->
+        <div class="absolute inset-0 tech-grid z-0 opacity-20"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full mt-20">
+            <div class="flex flex-col items-start max-w-4xl">
+                <!-- Status Indicator -->
+                <div class="flex items-center gap-3 mb-6 animate-fade-up" style="animation-delay: 0.1s;">
+                    <div class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+                    </div>
+                    <span class="font-tech text-xs tracking-[0.2em] text-orange-500 uppercase">Statut: Immatriculation Active (2026)</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-semibold text-white tracking-tighter uppercase leading-[0.9] mb-8 animate-fade-up text-glow" style="animation-delay: 0.2s;">
+                    Transformation 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-600">Digitale</span>
+                </h1>
+
+                <p class="text-slate-400 text-lg md:text-xl font-light max-w-xl leading-relaxed mb-10 animate-fade-up border-l border-orange-600/50 pl-6" style="animation-delay: 0.3s;">
+                    Conseil stratégique pour TPE/PME. Nous transformons vos données en décisions et automatisons l'opérationnel pour libérer votre croissance.
+                </p>
+
+                <!-- CTA -->
+                <div class="flex flex-col md:flex-row gap-6 animate-fade-up" style="animation-delay: 0.4s;">
+                    <button class="group relative px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-tech uppercase tracking-widest text-sm transition-all duration-300 clip-diagonal overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Notre Offre <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg"></iconify-icon>
+                        </span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </button>
+                    
+                    <button class="group uppercase hover:bg-white/5 transition-all duration-300 clip-diagonal text-sm text-white tracking-widest font-tech border-white/20 border pt-4 pr-8 pb-4 pl-8">
+                        Business Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Data Strip -->
+        <div class="absolute bottom-0 w-full border-t border-white/10 bg-black/20 backdrop-blur-sm z-20 hidden md:block">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between text-xs text-slate-500 font-tech tracking-widest uppercase">
+                <div class="flex gap-8">
+                    <span class="flex items-center gap-2"><iconify-icon icon="solar:graph-new-up-linear" class="text-orange-500 text-sm"></iconify-icon> Marché: 16k+ Établissements (72)</span>
+                    <span class="flex items-center gap-2"><iconify-icon icon="solar:target-linear" class="text-orange-500 text-sm"></iconify-icon> Cible: TPE/PME 1-50 Salariés</span>
+                </div>
+                <div>SCROLL TO INITIALIZE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Statistics Section (HUD Style) -->
+    <section class="py-24 border-b border-white/5 relative bg-[#05060A]" id="market">
+        <div class="max-w-7xl mx-auto px-6 mb-12">
+            <span class="font-tech text-xs text-orange-500 tracking-[0.3em] uppercase mb-2 block">Opportunité de Marché</span>
+            <h3 class="text-2xl text-white font-semibold">Le "No Man's Land" du Conseil</h3>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Stat 1 -->
+            <div class="group relative p-8 border border-white/5 hover:border-orange-600/30 bg-[#0A0C10] transition-colors duration-500">
+                <div class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                    <iconify-icon icon="solar:user-hand-up-linear" class="text-orange-500 text-2xl"></iconify-icon>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-2">440<span class="text-orange-600">k</span></h3>
+                <p class="font-tech text-xs tracking-widest text-slate-400 uppercase">TPE/PME sans solution</p>
+                <p class="text-xs text-slate-500 mt-2 font-light">Entreprises exprimant des difficultés à trouver un prestataire adapté (France Num 2025).</p>
+                <div class="w-full h-[1px] bg-slate-800 mt-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full w-1/3 bg-orange-600"></div>
+                </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="group relative p-8 border border-white/5 hover:border-orange-600/30 bg-[#0A0C10] transition-colors duration-500">
+                <div class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                    <iconify-icon icon="solar:bill-check-linear" class="text-orange-500 text-2xl"></iconify-icon>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-2">2026</h3>
+                <p class="font-tech text-xs tracking-widest text-slate-400 uppercase">Facturation Électronique</p>
+                <p class="text-xs text-slate-500 mt-2 font-light">Obligation légale imminente pour 960 000 entreprises, dont 65% non préparées.</p>
+                <div class="w-full h-[1px] bg-slate-800 mt-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full w-2/3 bg-orange-600"></div>
+                </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="group relative p-8 border border-white/5 hover:border-orange-600/30 bg-[#0A0C10] transition-colors duration-500">
+                <div class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
+                    <iconify-icon icon="solar:wallet-money-linear" class="text-orange-500 text-2xl"></iconify-icon>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-2">3<span class="text-sm align-top text-slate-500">x</span></h3>
+                <p class="font-tech text-xs tracking-widest text-slate-400 uppercase">Moins cher qu'une ESN</p>
+                <p class="text-xs text-slate-500 mt-2 font-light">Tarifs adaptés aux PME (TJM ~500€) avec une expertise équivalente aux grands cabinets.</p>
+                <div class="w-full h-[1px] bg-slate-800 mt-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full w-full bg-orange-600"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS / VIABILITY SECTION (NEW) -->
+    <section class="py-20 border-b border-white/5 bg-[#030509]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
+                <div>
+                    <span class="font-tech text-xs text-orange-500 tracking-[0.3em] uppercase mb-2 block">Validation &amp; Écosystème</span>
+                    <h3 class="text-3xl text-white font-semibold tracking-tight">Viabilité du Projet</h3>
+                    <p class="text-slate-400 font-light mt-2 max-w-lg">Le projet SOJJ Consulting est soutenu et validé par les acteurs institutionnels et économiques du territoire.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-tech text-[10px] text-slate-500 uppercase tracking-widest">Protocole de validation</span>
+                    <div class="h-[1px] w-12 bg-slate-700"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- URSSAF CARD -->
+                <div class="p-6 border border-white/10 bg-[#0F1218] hover:border-orange-600/40 transition-colors group">
+                    <div class="flex justify-between items-start mb-6">
+                        <iconify-icon icon="solar:shield-check-linear" class="text-white text-3xl opacity-50 group-hover:opacity-100 group-hover:text-orange-500 transition-all"></iconify-icon>
+                        <span class="bg-green-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 text-[10px] font-tech uppercase tracking-widest rounded-full">
+                            <span class="status-dot bg-emerald-500 mr-2 align-middle"></span>Accordé
+                        </span>
+                    </div>
+                    <h4 class="text-xl text-white font-semibold mb-1">URSSAF</h4>
+                    <p class="text-sm text-slate-400 font-light mb-4">Reconnaissance de la viabilité économique.</p>
+                    <div class="border-t border-white/5 pt-4">
+                        <div class="flex justify-between items-center text-xs font-tech text-slate-300">
+                            <span class="uppercase">Dispositif</span>
+                            <span class="text-white font-medium">ACRE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REGION CARD -->
+                <div class="p-6 border border-white/10 bg-[#0F1218] hover:border-orange-600/40 transition-colors group">
+                    <div class="flex justify-between items-start mb-6">
+                        <iconify-icon icon="solar:map-point-wave-linear" class="text-white text-3xl opacity-50 group-hover:opacity-100 group-hover:text-orange-500 transition-all"></iconify-icon>
+                        <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 text-[10px] font-tech uppercase tracking-widest rounded-full">
+                           Partenaire
+                        </span>
+                    </div>
+                    <h4 class="text-xl text-white font-semibold mb-1">Pays de la Loire</h4>
+                    <p class="text-sm text-slate-400 font-light mb-4">Aide Départementale pour Entreprendre.</p>
+                    <div class="space-y-3 border-t border-white/5 pt-4">
+                        <div class="flex justify-between items-center text-xs font-tech">
+                            <span class="text-slate-300 uppercase">Pass Diagnostic</span>
+                            <span class="text-emerald-400 flex items-center gap-1"><iconify-icon icon="solar:check-circle-linear"></iconify-icon> Accordé</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs font-tech">
+                            <span class="text-slate-300 uppercase">Pass Entreprendre</span>
+                            <span class="text-amber-400 flex items-center gap-1"><iconify-icon icon="solar:clock-circle-linear"></iconify-icon> À suivre</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ECOSYSTEM CARD -->
+                <div class="p-6 border border-white/10 bg-[#0F1218] hover:border-orange-600/40 transition-colors group">
+                    <div class="flex justify-between items-start mb-6">
+                        <iconify-icon icon="solar:connection-linear" class="text-white text-3xl opacity-50 group-hover:opacity-100 group-hover:text-orange-500 transition-all"></iconify-icon>
+                        <span class="bg-slate-700/30 text-slate-300 border border-white/10 px-3 py-1 text-[10px] font-tech uppercase tracking-widest rounded-full">
+                            En cours
+                        </span>
+                    </div>
+                    <h4 class="text-xl text-white font-semibold mb-1">Écosystème Sarthe</h4>
+                    <p class="text-sm text-slate-400 font-light mb-4">Intégration et réseau d'affaires.</p>
+                    <div class="border-t border-white/5 pt-4">
+                        <ul class="text-xs text-slate-400 space-y-2 font-tech uppercase tracking-wide">
+                            <li class="flex items-center gap-2"><iconify-icon icon="solar:arrow-right-linear" class="text-orange-600"></iconify-icon> Le Mans Innovation</li>
+                            <li class="flex items-center gap-2"><iconify-icon icon="solar:arrow-right-linear" class="text-orange-600"></iconify-icon> Carrefour des Entrepreneurs</li>
+                            <li class="flex items-center gap-2"><iconify-icon icon="solar:arrow-right-linear" class="text-orange-600"></iconify-icon> Clubs Business Locaux</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Grid Section -->
+    <section class="py-32 relative overflow-hidden" id="services">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-orange-900/10 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div class="">
+                    <span class="font-tech text-xs text-orange-500 tracking-[0.3em] uppercase mb-4 block">Catalogue de Services</span>
+                    <h2 class="text-3xl md:text-5xl font-semibold text-white tracking-tight uppercase">4 Blocs <br> D'Expertise</h2>
+                </div>
+                <div class="hidden md:block w-32 h-[1px] bg-slate-700 mb-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- Bloc 1: Diagnostic -->
+                <div class="group relative h-80 bg-slate-900/50 border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:bg-slate-800/50 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-30 mix-blend-luminosity transition-opacity duration-700 scale-100 group-hover:scale-105 transform"></div>
+                    <div class="absolute top-0 left-0 p-4">
+                        <span class="font-tech text-xs text-white/40 border border-white/10 px-2 py-1">01</span>
+                    </div>
+                    <div class="relative z-10">
+                        <iconify-icon icon="solar:magnifer-linear" class="text-orange-500 text-3xl mb-4"></iconify-icon>
+                        <h3 class="text-xl font-semibold text-white tracking-tight uppercase mb-2">Diagnostic &amp; Stratégie</h3>
+                        <p class="text-sm text-slate-400 max-w-sm mb-3">Audit flash ou complet. Identification des "quick wins", cartographie des flux et feuille de route priorisée.</p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-3">
+                            <span class="font-tech text-[10px] text-orange-500 uppercase tracking-wider">Tarif: 500€ (Flash) - 4k€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 2: BI -->
+                <div class="group relative h-80 bg-slate-900/50 border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:bg-slate-800/50 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-30 mix-blend-luminosity transition-opacity duration-700 scale-100 group-hover:scale-105 transform"></div>
+                    <div class="absolute top-0 left-0 p-4">
+                        <span class="font-tech text-xs text-white/40 border border-white/10 px-2 py-1">02</span>
+                    </div>
+                    <div class="relative z-10">
+                        <iconify-icon icon="solar:chart-square-linear" class="text-orange-500 text-3xl mb-4"></iconify-icon>
+                        <h3 class="text-xl font-semibold text-white tracking-tight uppercase mb-2">Pilotage &amp; BI</h3>
+                        <p class="text-sm text-slate-400 max-w-sm mb-3">Tableaux de bord sur mesure (Power BI, Looker). Consolidation de données pour un pilotage factuel.</p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-3">
+                            <span class="font-tech text-[10px] text-orange-500 uppercase tracking-wider">Tarif: 3k€ - 8k€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 3: Automatisation -->
+                <div class="group relative h-80 bg-slate-900/50 border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:bg-slate-800/50 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&amp;w=1974&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-20 group-hover:opacity-30 mix-blend-luminosity transition-opacity duration-700 scale-100 group-hover:scale-105 transform"></div>
+                    <div class="absolute top-0 left-0 p-4">
+                        <span class="font-tech text-xs text-white/40 border border-white/10 px-2 py-1">03</span>
+                    </div>
+                    <div class="relative z-10">
+                        <iconify-icon icon="solar:round-transfer-horizontal-linear" class="text-orange-500 text-3xl mb-4"></iconify-icon>
+                        <h3 class="text-xl font-semibold text-white tracking-tight uppercase mb-2">Automatisation &amp; IA</h3>
+                        <p class="text-sm text-slate-400 max-w-sm mb-3">Solutions No-Code (Make, Zapier) pour éliminer les tâches répétitives et sécuriser les processus.</p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-3">
+                            <span class="font-tech text-[10px] text-orange-500 uppercase tracking-wider">Tarif: 2.5k€ - 7k€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 4: Accompagnement -->
+                <div class="group relative h-80 bg-slate-900/50 border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:bg-slate-800/50 transition-colors duration-500">
+                    <div class="bg-center group-hover:opacity-30 transition-opacity duration-700 group-hover:scale-105 transform opacity-20 mix-blend-luminosity bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover absolute top-0 right-0 bottom-0 left-0 scale-100"></div>
+                    <div class="absolute top-0 left-0 p-4">
+                        <span class="font-tech text-xs text-white/40 border border-white/10 px-2 py-1">04</span>
+                    </div>
+                    <div class="relative z-10">
+                        <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-orange-500 text-3xl mb-4"></iconify-icon>
+                        <h3 class="text-xl font-semibold text-white tracking-tight uppercase mb-2">Accompagnement &amp; Formation</h3>
+                        <p class="text-sm text-slate-400 max-w-sm mb-3">Garantie d'adoption, conduite du changement et renfort opérationnel (Freelance embarqué).</p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-3">
+                            <span class="font-tech text-[10px] text-orange-500 uppercase tracking-wider">TJM: 450€ - 650€</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Projections Section (New) -->
+    <section class="py-24 bg-[#020408] border-t border-white/5" id="financials">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <span class="font-tech text-xs text-orange-500 tracking-[0.3em] uppercase mb-4 block">Trajectoire Financière</span>
+                <h2 class="text-3xl md:text-5xl font-semibold text-white tracking-tight uppercase">Prévisions <span class="text-slate-500">2026-2030</span></h2>
+            </div>
+
+            <!-- Financial Grid Table Style -->
+            <div class="overflow-x-auto">
+                <div class="min-w-[800px] border border-white/10 text-sm">
+                    <!-- Header -->
+                    <div class="grid grid-cols-6 bg-[#0F1218] border-b border-white/10 font-tech tracking-wider text-slate-400 uppercase text-xs">
+                        <div class="p-4 border-r border-white/10 col-span-2">Indicateur</div>
+                        <div class="p-4 border-r border-white/10 text-center text-orange-500">Y1 (2026)</div>
+                        <div class="p-4 border-r border-white/10 text-center">Y2 (2027)</div>
+                        <div class="p-4 border-r border-white/10 text-center">Y3 (2028)</div>
+                        <div class="p-4 text-center">Y4 (2029)</div>
+                    </div>
+                    
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-6 border-b border-white/5 hover:bg-white/5 transition-colors group">
+                        <div class="p-4 border-r border-white/5 col-span-2 font-medium text-white flex items-center gap-2">
+                            <iconify-icon icon="solar:graph-up-linear" class="text-slate-500 group-hover:text-orange-500"></iconify-icon> Chiffre d'Affaires
+                        </div>
+                        <div class="p-4 border-r border-white/5 text-center text-white font-mono">40 000 €</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">60 000 €</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">120 000 €</div>
+                        <div class="p-4 text-center text-slate-300 font-mono">190 000 €</div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="grid grid-cols-6 border-b border-white/5 hover:bg-white/5 transition-colors group">
+                        <div class="p-4 border-r border-white/5 col-span-2 font-medium text-white flex items-center gap-2">
+                             <iconify-icon icon="solar:users-group-rounded-linear" class="text-slate-500 group-hover:text-orange-500"></iconify-icon> Nombre de Clients
+                        </div>
+                        <div class="p-4 border-r border-white/5 text-center text-white font-mono">17</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">28</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">42</div>
+                        <div class="p-4 text-center text-slate-300 font-mono">60</div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="grid grid-cols-6 border-b border-white/5 hover:bg-white/5 transition-colors group">
+                        <div class="p-4 border-r border-white/5 col-span-2 font-medium text-white flex items-center gap-2">
+                             <iconify-icon icon="solar:calendar-linear" class="text-slate-500 group-hover:text-orange-500"></iconify-icon> Jours Facturés
+                        </div>
+                        <div class="p-4 border-r border-white/5 text-center text-white font-mono">80</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">120</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-300 font-mono">240</div>
+                        <div class="p-4 text-center text-slate-300 font-mono">380</div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="grid grid-cols-6 hover:bg-white/5 transition-colors bg-[#0A0C10] group">
+                        <div class="p-4 border-r border-white/5 col-span-2 font-bold text-orange-500 flex items-center gap-2">
+                             <iconify-icon icon="solar:wallet-linear" class="text-orange-500"></iconify-icon> Résultat Net
+                        </div>
+                        <div class="p-4 border-r border-white/5 text-center text-orange-500 font-mono font-bold">25 100 €</div>
+                        <div class="p-4 border-r border-white/5 text-center text-white font-mono">35 270 €</div>
+                        <div class="p-4 border-r border-white/5 text-center text-slate-400 font-mono">5 513 €*</div>
+                        <div class="p-4 text-center text-slate-400 font-mono">-6 600 €*</div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-slate-600 mt-4 font-tech">* Passage en SASU et embauches prévues en Y3/Y4 expliquant l'investissement structurel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Profile Section -->
+    <section class="relative py-32 flex items-center justify-center overflow-hidden border-t border-white/5" id="founder">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+             <div class="bg-gradient-to-r from-[#020408] via-transparent to-[#020408] absolute top-0 right-0 bottom-0 left-0"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            
+            <div class="order-2 md:order-1">
+                <span class="font-tech text-xs text-orange-500 tracking-[0.3em] uppercase mb-4 block">Le Porteur de Projet</span>
+                <h2 class="text-4xl font-semibold text-white tracking-tighter mb-6">Jean-Jacques SENOU</h2>
+                <div class="space-y-6 text-slate-400 font-light leading-relaxed">
+                    <p class="">
+                        <strong class="text-white">Expertise :</strong> 8+ années d'expérience en conseil stratégique et transformation digitale. Double formation Bac+6 (ESSCA &amp; UBFC).
+                    </p>
+                    <p class=""><strong class="text-white">Track Record :</strong> Anciennement consultant pour la Commission Européenne, Safran et Banque Palatine. A piloté l'analytique des portefeuilles de 2 Mds€+ et orchestré des programmes impactant 500k+ bénéficiaires.</p>
+                    <p class="">
+                        <strong class="text-white">Vision :</strong> Apporter aux TPE/PME l'excellence des grands cabinets, sans les coûts ni la complexité. Un tiers de confiance indépendant pour votre croissance.
+                    </p>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-4">
+                     <span class="px-3 py-1 border border-white/20 text-xs font-tech uppercase text-slate-400 rounded-full hover:border-orange-500 transition-colors cursor-default">HEC Paris (Planifié 2026)</span>
+                     <span class="px-3 py-1 border border-white/20 text-xs font-tech uppercase text-slate-400 rounded-full hover:border-orange-500 transition-colors cursor-default">INSEAD (Planifié 2026)</span>
+                     <span class="px-3 py-1 border border-orange-500/30 text-xs font-tech uppercase text-orange-500 rounded-full bg-orange-500/10">Certificats IA &amp; Data</span>
+                     <span class="px-3 py-1 border border-white/20 text-xs font-tech uppercase text-white rounded-full">Microsoft Power BI</span>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2 relative">
+                <div class="relative w-full aspect-square md:aspect-[4/5] overflow-hidden border border-white/10 glass-panel">
+                    <!-- Placeholder for Portrait - using abstract professional tech image -->
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&amp;w=1932&amp;auto=format&amp;fit=crop" alt="Consulting Meeting" class="w-full h-full object-cover filter grayscale contrast-125 opacity-60 hover:opacity-80 transition-opacity duration-700">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
+                        <div class="flex items-center gap-4">
+                            <div class="h-[1px] flex-1 bg-orange-600"></div>
+                            <span class="font-tech text-xs tracking-[0.2em] text-white uppercase">Founder &amp; CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative element -->
+                <div class="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-orange-600/50"></div>
+                <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-orange-600/50"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-20 border-y border-white/5 bg-[#05060A]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <iconify-icon icon="solar:quote-up-square-linear" class="text-4xl text-orange-600 mb-8 opacity-50"></iconify-icon>
+            <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide leading-relaxed italic mb-8">
+                "Qualité est aucun hasard. Elle est toujours le résultat d'un effort intelligent."
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <div class="h-[1px] w-12 bg-orange-600"></div>
+                <span class="font-tech text-xs tracking-[0.2em] text-slate-400 uppercase">John Ruskin / Philosophie Industrielle</span>
+                <div class="h-[1px] w-12 bg-orange-600"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer class="relative bg-[#020408] pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <!-- Col 1 -->
+                <div class="">
+                    <div class="flex items-center gap-2 mb-6">
+                        <iconify-icon icon="solar:atom-linear" class="text-orange-600 text-xl"></iconify-icon>
+                        <span class="font-tech text-md tracking-[0.2em] font-semibold text-white uppercase">SOJJ Consulting</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                        Siège Social :<br>
+                        103 Rue Gambetta<br>
+                        72000 Le Mans, France
+                    </p>
+                    <p class="text-slate-500 text-sm mb-6">
+                        SIREN : 100 345 743
+                    </p>
+                    <div class="flex gap-4 text-slate-400">
+                        <a href="#" class="hover:text-white transition-colors"></a>
+                        <a href="#" class="hover:text-white transition-colors"></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="">
+                    <h4 class="font-tech text-xs text-white uppercase tracking-widest mb-6">Services</h4>
+                    <ul class="space-y-3 text-sm text-slate-500 font-light">
+                        <li class=""><a href="#" class="hover:text-orange-500 transition-colors">Diagnostic Digital</a></li>
+                        <li class=""><a href="#" class="hover:text-orange-500 transition-colors">Business Intelligence</a></li>
+                        <li class=""><a href="#" class="hover:text-orange-500 transition-colors">Automatisation</a></li>
+                        <li class=""><a href="#" class="hover:text-orange-500 transition-colors">Facturation Élec.</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                
+
+                <!-- Col 4: Newsletter / Input -->
+                <div class="">
+                    <h4 class="font-tech text-xs text-white uppercase tracking-widest mb-6">Contact Direct</h4>
+                    <form class="flex flex-col gap-4">
+                        <div class="relative">
+                            <input type="email" placeholder="votre@email.com" class="w-full bg-[#0F1218] border border-white/10 p-3 pl-4 text-xs text-white focus:outline-none focus:border-orange-600 transition-colors placeholder-slate-600 font-tech tracking-wider uppercase">
+                        </div>
+                        <button class="w-full bg-white text-black hover:bg-orange-600 hover:text-white transition-colors p-3 text-xs font-bold uppercase tracking-widest clip-diagonal">
+                            Prendre RDV
+                        </button>
+                    </form>
+                    <p class="text-xs text-slate-600 font-mono mt-4">contact@sojjconsulting.eu</p>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[10px] text-slate-600 uppercase tracking-widest font-tech">
+                    © 2026 SOJJ Consulting. Tous droits réservés.
+                </p>
+                <div class="flex items-center gap-2">
+                    <div class="h-1 w-1 rounded-full bg-green-500"></div>
+                    <span class="text-[10px] text-slate-600 uppercase tracking-widest font-tech">Serveur: Le Mans (FR)</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>
